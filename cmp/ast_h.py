@@ -545,6 +545,12 @@ class Comparation(Node):
         self.expr2 = expr2
 
     def print_visitor(self, visitor):
+        argument1 = visitor.visit(self.expr1)
+        argument2 = visitor.visit(self.expr2)
+        return f'({argument1} {argument2})'
+
+class Not_Equal(Comparation):
+    def print_visitor(self, visitor):
         expr1 = visitor.visit(self.expr1)
         expr2 = visitor.visit(self.expr2)
         return f'{self.__class__.__name__} ({expr1} {expr2})'
